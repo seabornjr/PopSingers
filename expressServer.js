@@ -29,6 +29,18 @@ app.get('/singers', (req, res) => {
 })
 
 
+app.post('/singers', (req, res) => {
+    const { singer_name } = req.body;
+    client.query('INSERT INTO singers (singer_name) VALUES ($1)', [singer_name],
+        (error, results) => {
+            if (error) {
+                throw error
+            }
+            res.status(201).send('Singer Added')
+        })
+})
+
+
 app.listen(PORT, () => {
     console.log(`Our app is running on ${PORT}`)
 });

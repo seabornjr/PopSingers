@@ -1,3 +1,5 @@
+
+
 var result;
 var resultsDiv = document.getElementById("results")
 
@@ -11,9 +13,22 @@ function getSingers() {
                 resultsDiv.append(singerDiv)
             })
         })
-
 }
 
-var button = document.getElementById('btn_submit');
 
+var button = document.getElementById('btn_submit');
 button.addEventListener('click', getSingers);
+
+var submit = document.getElementById('add');
+var input = document.getElementById('search')
+let newSinger = { "singer_name": input.value }
+
+submit.addEventListener('click', () => {
+    fetch('http://localhost:3002/singers', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(newSinger)
+    })
+        .then(getSingers)
+})
+
