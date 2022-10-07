@@ -18,12 +18,15 @@ function getSingers() {
 
 var button = document.getElementById('btn_submit');
 button.addEventListener('click', getSingers);
-
 var submit = document.getElementById('add');
-var input = document.getElementById('search')
-let newSinger = { "singer_name": input.value }
+
 
 submit.addEventListener('click', () => {
+    resultsDiv.innerHTML = '';
+    var input = document.getElementById('search')
+    let newSinger = { "singer_name": input.value }
+    console.log(newSinger);
+
     fetch('http://localhost:3002/singers', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },

@@ -1,7 +1,7 @@
 const PORT = 3002;
 const express = require('express');
 const { Client } = require('pg');
-const connectionString = 'postgresql://postgres:docker@localhost:5432/popsingers'
+const connectionString = 'postgres://postgres:postgrespw@localhost:55002/popsingers'
 const client = new Client({
     connectionString: connectionString
 })
