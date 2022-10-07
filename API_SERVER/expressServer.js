@@ -1,12 +1,13 @@
-const PORT = 3002;
+//const PORT = 3002;
 const express = require('express');
 const { Client } = require('pg');
-const connectionString = 'postgres://postgres:postgrespw@localhost:55002/popsingers'
+var cors = require('cors')
+const config = require('./config')[process.env.NODE_ENV || "production"]
+const PORT = config.PORT
 const client = new Client({
-    connectionString: connectionString
+    connectionString: config.connectionString
 })
 
-var cors = require('cors')
 
 
 const app = express();

@@ -1,10 +1,14 @@
 
-
+//var ENV = 'dev';
+var ENV = 'production';
 var result;
 var resultsDiv = document.getElementById("results")
+let APIURL = ENV === 'dev' ? "http://localhost:3002" : 'https://singer-backend-server.onrender.com/'
+
+
 
 function getSingers() {
-    fetch('https://popsingers-list-ui.onrender.com')
+    fetch(`${APIURL}/singers`)
         .then(res => res.json())
         .then(data => {
             data.map(singers => {
@@ -27,7 +31,7 @@ submit.addEventListener('click', () => {
     let newSinger = { "singer_name": input.value }
     console.log(newSinger);
 
-    fetch('https://popsingers-list-ui.onrender.com', {
+    fetch(`${APIURL}/singers`, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(newSinger)
