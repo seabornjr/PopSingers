@@ -4,7 +4,7 @@ var result;
 var resultsDiv = document.getElementById("results")
 
 function getSingers() {
-    fetch('http://localhost:3002/singers')
+    fetch('https://popsingers-list-ui.onrender.com')
         .then(res => res.json())
         .then(data => {
             data.map(singers => {
@@ -27,7 +27,7 @@ submit.addEventListener('click', () => {
     let newSinger = { "singer_name": input.value }
     console.log(newSinger);
 
-    fetch('http://localhost:3002/singers', {
+    fetch('https://popsingers-list-ui.onrender.com', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(newSinger)
